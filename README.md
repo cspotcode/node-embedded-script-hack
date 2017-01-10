@@ -8,7 +8,7 @@ What if we could create such an embedded bundle from the CLI without rebuilding 
 
 Here's how I think it can work:
 
-```
+```bash
 # Compile your project into a single blob of JS by using some sort of bundler
 webpack
 # Append that blob onto the node executable
@@ -21,7 +21,7 @@ Next we need to muck with Node's binary to load and run our blob of code as the 
 I think this is a good entry point:
 https://github.com/nodejs/node/blob/master/lib/internal/bootstrap_node.js#L67
 
-```
+```js
 // Embed the following script into the node binary, overwriting parts of node's lib/internal/bootstrap_node.js
 {
   // Read the script blob from the end of node's binary
